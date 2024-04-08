@@ -1,21 +1,25 @@
 # vue3
 
-## Project setup
+## 安装node_modules
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 启动本地服务——测试接口
 ```
 npm run serve
 ```
+### 启动本地服务——正式接口
+```
+npm run serve:prod
+```
 
-### Compiles and minifies for production
+### 打包——正式接口
 ```
 npm run build
 ```
 
-### Lints and fixes files
+### 检测错误
 ```
 npm run lint
 ```
