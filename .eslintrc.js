@@ -3,6 +3,11 @@ module.exports = {
   env: {
     node: true,
   },
+  // 解决eslint对于一些全局变量飘红的问题
+  globals: {
+    ElMessage: 'readonly',
+    ElMessageBox: "readonly"
+  },
   extends: [
     "plugin:vue/vue3-essential",
     "eslint:recommended",
