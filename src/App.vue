@@ -83,7 +83,6 @@ export default defineComponent({
           });
         }
       });
-      console.log("111", router);
     };
     const routerComputed = computed(() => {
       return router.options.routes.filter(item => {
