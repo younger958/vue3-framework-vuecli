@@ -5,6 +5,7 @@ export const manage =
     {
         path: "/manage",
         name: "manageParent",
+        redirect: '/manage/mag',
         meta: reactive({
             title: '管理'
         }),

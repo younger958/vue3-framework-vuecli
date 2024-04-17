@@ -6,7 +6,9 @@ export const common: RouteRecordRaw[] =
         path: "/:pathMatch(.*)",
         name: "404",
         meta: reactive({
-            title: '位置页面',
+            title: '错误页面',
+            hiddenSide: true,
+            hiddenHeader: true,
             hidden: true,
             whitelist: true
         }),
@@ -16,6 +18,6 @@ export const common: RouteRecordRaw[] =
         ]
     },
     {
-        path:'/',
-        redirect:'/home'
+        path: '/',
+        redirect: '/home'
     }] 

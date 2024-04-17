@@ -3,6 +3,7 @@ import { reactive } from "vue";
 export const report =
     {
         path: "/report",
+        redirect: '/report/rep',
         name: "reportParent",
         meta: reactive({
             title: '报表'

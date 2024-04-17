@@ -1,19 +1,19 @@
 <template>
   <div class="common-layout">
-    <el-container>
-      <el-header class="app_header">
+    <el-container v-if="permission.pageState === 1">
+      <el-header class="app_header" v-if="!permission.computedHiddenHeader">
         <div>头部</div>
       </el-header>
       <el-container class="app_container">
-        <div class="container_left">
+        <div class="container_left" v-if="!permission.computedHiddenSide">
           <el-aside width="200px">
             <el-menu
               router
-              :default-active="defaultActive"
+              :default-active="permission.defaultActive"
               class="el-menu-vertical-demo"
             >
               <template
-                v-for="(routerItem, index) in routerComputed"
+                v-for="(routerItem, index) in permission.routerComputed"
                 :key="index"
               >
                 <el-sub-menu
@@ -45,59 +45,33 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, defineComponent } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { defineComponent, watch } from "vue";
+import usePermission from "@/store/permission";
 export default defineComponent({
   name: "HomeView",
   components: {},
   setup() {
-    const router = useRouter();
-    const route = useRoute();
-    console.log("route", route);
+    let loading: any = null;
+    const permission = usePermission();
 
-    const fetchData = () => {
-      return new Promise<{ payload: any }>(resolve => {
-        setTimeout(() => {
-          const data = {
-            payload: {
-              home: true,
-              manage: true,
-            },
-          };
-          resolve(data);
-        }, 1000);
-      });
-    };
-    const init = async () => {
-      const res = await fetchData();
-      router.options.routes.forEach(item => {
-        for (const iterator of Object.entries(res.payload)) {
-          if (item.name === iterator[0]) {
-            Object.assign(item.meta as any, { whitelist: true });
-          }
-          item.children?.forEach(childItem => {
-            if (childItem.name === iterator[0]) {
-              Object.assign(item.meta as any, { whitelist: true });
-              Object.assign(childItem.meta as any, { whitelist: true });
-            }
+    watch(
+      () => permission.pageState,
+      n => {
+        if (n === 2) {
+          loading = ElLoading.service({
+            lock: true,
+            fullscreen: true,
+            text: "正在加载...",
+            background: "rgba(255, 255, 255, 1)",
           });
+        } else if (loading) {
+          loading.close();
         }
-      });
-      console.log("111", router);
-    };
-    const routerComputed = computed(() => {
-      return router.options.routes.filter(item => {
-        return !item.meta?.hidden && item.meta?.whitelist;
-      });
-    });
-    const defaultActive = computed(() => {
-      return route.path;
-    });
-    init();
-    return {
-      defaultActive,
-      routerComputed,
-    };
+      },
+    );
+    permission.getPage();
+
+    return { permission };
   },
 });
 </script>
@@ -106,7 +80,5 @@ export default defineComponent({
 #app {
   width: 100%;
   height: 100%;
-}
-.app_header {
 }
 </style>
