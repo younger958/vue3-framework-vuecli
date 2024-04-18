@@ -52,9 +52,9 @@ const usePermission = defineStore('userInfo', {
             }
         }
     },
-    // 全部存入
+    // 全部持久化
     // persist:true,
-    // 选择性存入
+    // 选择性持久化
     persist: {
         key: 'demostorage',
         storage: window.localStorage,
