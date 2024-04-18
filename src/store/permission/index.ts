@@ -51,6 +51,14 @@ const usePermission = defineStore('userInfo', {
 
             }
         }
+    },
+    // 全部存入
+    // persist:true,
+    // 选择性存入
+    persist: {
+        key: 'demostorage',
+        storage: window.localStorage,
+        paths: ['pageState']
     }
 })
 export default usePermission
