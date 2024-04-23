@@ -10,6 +10,7 @@ module.exports = defineConfig({
     plugins: [
       AutoImport({
         resolvers: [ElementPlusResolver()],
+        dts: 'auto-imports.d.ts'
       }),
       // 测试没有component情况下
       Components({

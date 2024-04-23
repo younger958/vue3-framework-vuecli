@@ -30,7 +30,6 @@ const usePermission = defineStore('userInfo', {
             try {
                 this.pageState = 2
                 const res = await demo();
-                console.log('执行了请求页面', res);
                 this.router.options.routes.forEach(item => {
                     for (const iterator of Object.entries(res.payload)) {
                         if (item.name === iterator[0]) {

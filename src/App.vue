@@ -53,7 +53,6 @@ export default defineComponent({
   setup() {
     let loading: any = null;
     const permission = usePermission();
-
     watch(
       () => permission.pageState,
       n => {
@@ -70,7 +69,6 @@ export default defineComponent({
       },
     );
     permission.getPage();
-
     return { permission };
   },
 });
@@ -80,5 +78,25 @@ export default defineComponent({
 #app {
   width: 100%;
   height: 100%;
+}
+.common-layout {
+  width: 100%;
+  height: 100%;
+  .el-container{
+    width: 100%;
+  height: 100%;
+    .app_container {
+    width: 100%;
+    height: 100%;
+    .container_right {
+      width: 100%;
+      height: 100%;
+    }
+    .el-main {
+      padding: 0;
+    }
+  }
+  }
+  
 }
 </style>

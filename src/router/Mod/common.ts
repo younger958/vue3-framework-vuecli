@@ -19,5 +19,5 @@ export const common: RouteRecordRaw[] =
     },
     {
         path: '/',
-        redirect: '/home'
+        redirect: '/pcvideo'
     }] 
