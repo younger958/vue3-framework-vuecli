@@ -9,7 +9,7 @@ module.exports = defineConfig({
   configureWebpack: {
     plugins: [
       AutoImport({
-        resolvers: [ElementPlusResolver()],
+        resolvers: [ElementPlusResolver()]
       }),
       // 测试没有component情况下
       Components({

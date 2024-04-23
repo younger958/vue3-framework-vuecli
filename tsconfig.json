@@ -34,7 +34,8 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx",
-    "auto-imports.d.ts"
+    "auto-imports.d.ts",
+    "Element-puls.d.ts"
   ],
   "exclude": [
     "node_modules"
