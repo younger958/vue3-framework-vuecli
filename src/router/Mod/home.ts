@@ -9,7 +9,7 @@ export const home =
             title: '首页'
         }),
         component: () =>
-            import(/* webpackChunkName: "home" */ "@/views/Home/page/Overview.vue"),
+            import(/* webpackChunkName: "home" */ "@/views/Home/Overview.vue"),
         children: [
         ]
     } as RouteRecordRaw

@@ -14,7 +14,7 @@ export const report =
                 name: 'report',
                 meta: reactive({ title: '报表' }),
                 component: () =>
-                    import(/* webpackChunkName: "report" */ "@/views/Report/page/Report.vue"),
+                    import(/* webpackChunkName: "report" */ "@/views/Report/Report.vue"),
             },
         ]
     } as RouteRecordRaw

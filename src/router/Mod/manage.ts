@@ -15,7 +15,7 @@ export const manage =
                 name: 'manage',
                 meta: reactive({ title: '管理' }),
                 component: () =>
-                    import(/* webpackChunkName: "manage" */ "@/views/Manage/page/Manage.vue"),
+                    import(/* webpackChunkName: "manage" */ "@/views/Manage/Manage.vue"),
             },
         ]
     } as RouteRecordRaw

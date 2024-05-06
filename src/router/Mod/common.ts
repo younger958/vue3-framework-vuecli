@@ -13,7 +13,7 @@ export const common: RouteRecordRaw[] =
             whitelist: true
         }),
         component: () =>
-            import(/* webpackChunkName: "404" */ "@/views/Common/page/404.vue"),
+            import(/* webpackChunkName: "404" */ "@/views/Common/404.vue"),
         children: [
         ]
     },
