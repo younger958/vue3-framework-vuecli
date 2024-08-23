@@ -1,12 +1,13 @@
 <template>
   <div class="about">
-    <el-button @click="init">我是 {{ demoRef?.a }}</el-button>
-    
+    <el-button @click="plus(2)">我是 {{ addData.num}}</el-button>
+    <demo1></demo1>
   </div>
 </template>
 <script lang="ts">
 // import { login } from "@/api/login/login";
 import { defineComponent, onMounted, reactive, ref, toRefs } from "vue";
+import { useAdd } from "@/hooks/demo/demo";
 export default defineComponent({
   setup() {
     const data = reactive({
@@ -29,13 +30,14 @@ export default defineComponent({
         }]
       }
     })
+    const { addData, plus } = useAdd()
     const init = async () => {
       // const res = await login({
       //   username: "111",
       //   password: "222",
-      // });
+      // });  
       // console.log(res);
-      data.option.series[0].data[0]=50
+      data.option.series[0].data[0] = 50
     };
     const demoRef = ref<any>(null)
     onMounted(() => {
@@ -44,8 +46,10 @@ export default defineComponent({
     return {
       init,
       demoRef,
-      ...toRefs(data)
+      ...toRefs(data),
+      addData, plus
     };
+    
   },
 });
 </script>
