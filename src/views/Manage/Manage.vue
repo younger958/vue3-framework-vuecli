@@ -1,5 +1,5 @@
 <template>
   <div class="about">
-    <el-button>我是 manage</el-button>
+    <el-button>我是 管理页面</el-button>
   </div>
 </template>

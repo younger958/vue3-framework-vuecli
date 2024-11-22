@@ -1,12 +1,8 @@
 export function demo() {
-    return new Promise<{ payload: { [key: string]: boolean } }>(resolve => {
+    return new Promise<{ payload: string[] }>(resolve => {
         setTimeout(() => {
             const data = {
-                payload: {
-                    home: true,
-                    manage: true,
-                    report: true
-                },
+                payload: ['home', 'manage', 'test', 'report', 'production'],
             };
             resolve(data);
         }, 1000);

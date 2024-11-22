@@ -5,14 +5,11 @@ import { report } from "./Mod/report";
 import { common } from "./Mod/common";
 
 const routes: Array<RouteRecordRaw> = [
-  home,
-  manage,
-  report,
   ...common
 ];
-const router = createRouter({
+export const router = createRouter({
   history: createWebHashHistory(),
   routes,
 });
-
-export default router;
+export const asyncRouter = [home, manage, report]
+router;

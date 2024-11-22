@@ -9,13 +9,11 @@ export const common: RouteRecordRaw[] =
             title: '错误页面',
             hiddenSide: true,
             hiddenHeader: true,
-            hidden: true,
-            whitelist: true
+            commonPage: true,
+
         }),
         component: () =>
             import(/* webpackChunkName: "404" */ "@/views/Common/404.vue"),
-        children: [
-        ]
     },
     {
         path: '/',

@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <el-button @click="plus(2)">我是 {{ addData.num}}</el-button>
+    <el-button @click="plus(2)">我是首页 {{ addData.num}}</el-button>
     <demo1></demo1>
   </div>
 </template>

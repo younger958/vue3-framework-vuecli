@@ -1,40 +1,18 @@
 <template>
   <div class="common-layout">
-    <el-container v-if="permission.pageState === 1">
-      <el-header class="app_header" v-if="!permission.computedHiddenHeader">
+    <el-container>
+      <el-header class="app_header">
         <div>头部</div>
       </el-header>
       <el-container class="app_container">
-        <div class="container_left" v-if="!permission.computedHiddenSide">
+        <div class="container_left">
           <el-aside width="200px">
-            <el-menu
-              router
-              :default-active="permission.defaultActive"
-              class="el-menu-vertical-demo"
-            >
+            <el-menu router :default-active="route.path">
               <template
-                v-for="(routerItem, index) in permission.routerComputed"
+                v-for="(routerItem, index) in permission.menuTree"
                 :key="index"
               >
-                <el-sub-menu
-                  v-if="routerItem.children?.length"
-                  :index="routerItem.path"
-                >
-                  <template #title>
-                    <span>{{ routerItem.meta?.title }}</span>
-                  </template>
-                  <el-menu-item-group>
-                    <el-menu-item
-                      v-for="(childItem, childIndex) in routerItem.children"
-                      :key="childIndex"
-                      :index="childItem.path"
-                      >{{ childItem.meta?.title }}</el-menu-item
-                    >
-                  </el-menu-item-group>
-                </el-sub-menu>
-                <el-menu-item v-else :index="routerItem.path">
-                  <span>{{ routerItem.meta?.title }}</span>
-                </el-menu-item>
+                <menu-item :route="routerItem"></menu-item>
               </template>
             </el-menu>
           </el-aside>
@@ -45,33 +23,18 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, watch } from "vue";
+import { defineComponent } from "vue";
 import usePermission from "@/store/permission";
+import { useRoute } from "vue-router";
+import MenuItem from "@/components/common/MenuItem.vue";
 export default defineComponent({
   name: "HomeView",
-  components: {},
+  components: { MenuItem },
   setup() {
-    let loading: any = null;
+    // let loading: any = null;
     const permission = usePermission();
-
-    watch(
-      () => permission.pageState,
-      n => {
-        if (n === 2) {
-          loading = ElLoading.service({
-            lock: true,
-            fullscreen: true,
-            text: "正在加载...",
-            background: "rgba(255, 255, 255, 1)",
-          });
-        } else if (loading) {
-          loading.close();
-        }
-      },
-    );
-    permission.getPage();
-
-    return { permission };
+    const route = useRoute();
+    return { permission, route };
   },
 });
 </script>
@@ -80,5 +43,8 @@ export default defineComponent({
 #app {
   width: 100%;
   height: 100%;
+}
+.app_header {
+  background-color: antiquewhite;
 }
 </style>
